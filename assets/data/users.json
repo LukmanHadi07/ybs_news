@@ -1,0 +1,14 @@
+[
+  {
+    "id": "user_001",
+    "email": "lukmanhadi2000@gmail.com",
+    "password": "Password123!",
+    "isFirstLogin": true
+  },
+  {
+    "id": "user_002",
+    "email": "demo@ybnews.com",
+    "password": "Demo1234",
+    "isFirstLogin": false
+  }
+]
