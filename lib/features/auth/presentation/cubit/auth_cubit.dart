@@ -116,13 +116,11 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> register({
-    required String name,
     required String email,
     required String password,
   }) async {
     emit(AuthLoading());
     final result = await _registerUsecase(
-      name: name,
       email: email,
       password: password,
     );

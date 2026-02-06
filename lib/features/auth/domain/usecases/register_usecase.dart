@@ -8,10 +8,9 @@ class RegisterUsecase {
   RegisterUsecase(this.repo);
 
   Future<Either<Failure, void>> call({
-    required String name,
     required String email,
     required String password,
   }) {
-    return repo.register(name: name, email: email, password: password);
+    return repo.register(email: email, password: password);
   }
 }

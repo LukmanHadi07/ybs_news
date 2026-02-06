@@ -19,20 +19,18 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _confirmEmailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+
   final _rememberMe = ValueNotifier<bool>(false);
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _confirmEmailController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
+
     _rememberMe.dispose();
     super.dispose();
   }
@@ -68,13 +66,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     _heeaderRegister(),
                     SizedBox(height: 24.h),
                     LoginTextField(
-                      label: 'Nama Lengkap',
-                      controller: _nameController,
-                      validator: RegisterValidators.validateName,
-                      textInputAction: TextInputAction.next,
-                    ),
-                    SizedBox(height: 16.h),
-                    LoginTextField(
                       label: 'Email',
                       controller: _emailController,
                       validator: RegisterValidators.validateEmail,
@@ -98,18 +89,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       label: 'Password',
                       controller: _passwordController,
                       validator: RegisterValidators.validatePassword,
-                      obscureText: true,
-                      textInputAction: TextInputAction.next,
-                    ),
-                    SizedBox(height: 16.h),
-                    LoginTextField(
-                      label: 'Konfirmasi Password',
-                      controller: _confirmPasswordController,
-                      validator: (value) =>
-                          RegisterValidators.validateConfirmPassword(
-                            value,
-                            _passwordController.text,
-                          ),
                       obscureText: true,
                       textInputAction: TextInputAction.done,
                     ),
@@ -145,7 +124,6 @@ class _RegisterPageState extends State<RegisterPage> {
                         if (!isValid) return;
                         FocusManager.instance.primaryFocus?.unfocus();
                         context.read<AuthCubit>().register(
-                          name: _nameController.text.trim(),
                           email: _emailController.text.trim(),
                           password: _passwordController.text,
                         );

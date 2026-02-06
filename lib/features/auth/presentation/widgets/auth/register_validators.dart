@@ -8,13 +8,6 @@ class RegisterValidators {
   static final RegExp _passwordHasLetter = RegExp(r'[A-Za-z]');
   static final RegExp _passwordHasNumber = RegExp(r'[0-9]');
 
-  static String? validateName(String? value) {
-    final name = value?.trim() ?? '';
-    if (name.isEmpty) return 'Nama lengkap wajib diisi';
-    if (name.length < 3) return 'Nama lengkap minimal 3 karakter';
-    return null;
-  }
-
   static String? validateEmail(String? value) {
     final email = value?.trim() ?? '';
     if (email.isEmpty) return 'Email wajib diisi';
@@ -42,10 +35,5 @@ class RegisterValidators {
     return null;
   }
 
-  static String? validateConfirmPassword(String? value, String password) {
-    final confirm = value ?? '';
-    if (confirm.isEmpty) return 'Konfirmasi password wajib diisi';
-    if (confirm != password) return 'Password tidak sama';
-    return null;
-  }
+  // Confirm password removed in simplified register form.
 }

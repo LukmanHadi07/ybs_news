@@ -154,7 +154,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, void>> register({
-    required String name,
     required String email,
     required String password,
   }) async {
@@ -163,7 +162,7 @@ class AuthRepositoryImpl implements AuthRepository {
       if (exists) {
         return const Left(ServerFailure(message: 'Email already exists'));
       }
-      await local.createUser(name: name, email: email, password: password);
+      await local.createUser(email: email, password: password);
       return const Right(null);
     } catch (e) {
       return Left(ServerFailure(message: e.toString()));

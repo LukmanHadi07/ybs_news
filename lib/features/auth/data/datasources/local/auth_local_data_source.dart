@@ -9,7 +9,6 @@ abstract class AuthLocalDataSource {
   Future<void> updateIsFirstLogin(String email, bool isFirstLogin);
   Future<bool> emailExists(String email);
   Future<void> createUser({
-    required String name,
     required String email,
     required String password,
   });
@@ -65,7 +64,6 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   @override
   Future<void> createUser({
-    required String name,
     required String email,
     required String password,
   }) async {
